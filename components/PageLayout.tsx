@@ -10,7 +10,6 @@ const PageLayout: FC<{ children: ReactNode }> = ({ children }) => {
       <Sidebar />
       <Box h="full" w="full" bg={bgColor}>
         {children}
-        main content
       </Box>
     </Box>
   );

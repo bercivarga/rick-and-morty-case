@@ -10,8 +10,10 @@ import {
   useColorMode,
   useColorModeValue,
   VStack,
+  Box,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
+import NextImage from "next/image";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import sidebarMenuItems from "../menus/sidebarMenu";
 
@@ -31,28 +33,50 @@ const Sidebar = () => {
       justifyContent="space-between"
       flexDirection="column"
     >
-      <List spacing={4}>
-        {sidebarMenuItems.map((menuItem) => (
-          <ListItem
-            key={menuItem.name}
-            as={Button}
-            leftIcon={<menuItem.icon />}
-            variant="solid"
-            colorScheme="gray"
-            color={buttonColor}
-            alignItems="center"
-            w="full"
-          >
-            <LinkBox w="full" textAlign="left" alignItems="center">
-              <NextLink href={menuItem.path} passHref>
-                <LinkOverlay textAlign="left" w="full">
-                  {menuItem.name}
-                </LinkOverlay>
-              </NextLink>
-            </LinkBox>
-          </ListItem>
-        ))}
-      </List>
+      <Box>
+        <Flex
+          w="full"
+          alignItems="center"
+          justifyContent="flex-start"
+          flexDir="row"
+        >
+          <Box marginRight={2}>
+            <NextImage src="/rnm_portal.png" width={32} height={32} />
+          </Box>
+          <Text fontSize="large" fontWeight="bold">
+            Rick and Morty DB
+          </Text>
+        </Flex>
+        <List spacing={4} marginTop={6}>
+          {sidebarMenuItems.map((menuItem) => (
+            <ListItem
+              key={menuItem.name}
+              as={Button}
+              leftIcon={<menuItem.icon />}
+              fontSize="xl"
+              variant="solid"
+              colorScheme="gray"
+              color={buttonColor}
+              alignItems="center"
+              display="flex"
+              w="full"
+            >
+              <LinkBox w="full" textAlign="left" alignItems="center">
+                <NextLink href={menuItem.path} passHref>
+                  <LinkOverlay
+                    textAlign="left"
+                    w="full"
+                    lineHeight="normal"
+                    fontSize="md"
+                  >
+                    {menuItem.name}
+                  </LinkOverlay>
+                </NextLink>
+              </LinkBox>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
       <Flex justifyContent="space-between" flexDir="row" alignItems="flex-end">
         <VStack spacing={1} color="gray.300" alignItems="flex-start">
           <Text as="span">by berci varga</Text>
