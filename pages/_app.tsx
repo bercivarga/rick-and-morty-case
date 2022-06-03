@@ -3,6 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../styles/theme";
 import PageLayout from "../components/PageLayout";
 import "reset-css";
+import "../styles/fonts.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
