@@ -1,9 +1,24 @@
-import { Box, HStack, Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Text,
+  useBreakpointValue,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 
 const Characters = () => {
   const [characters, setCharacters] = useState<any[]>();
+
+  const gridRows = useBreakpointValue({
+    base: 1,
+    sm: 2,
+    lg: 3,
+    xl: 4,
+  });
 
   useEffect(() => {
     (async function () {
@@ -32,19 +47,21 @@ const Characters = () => {
         </Text>
       </Flex>
       <Box h="calc(100% - 100px)" overflowY="scroll" p={6}>
-        <HStack h="unset" gap={4} spacing={0} flexWrap="wrap">
+        <Grid h="full" templateColumns={`repeat(${gridRows}, 1fr)`} gap={4}>
           {characters.map((char) => (
-            <CharacterCard
-              gender={char.gender}
-              image={char.image}
-              location={char.location}
-              name={char.name}
-              species={char.species}
-              status={char.status}
-              type={char.type}
-            />
+            <GridItem rowSpan={1} colSpan={1}>
+              <CharacterCard
+                gender={char.gender}
+                image={char.image}
+                location={char.location}
+                name={char.name}
+                species={char.species}
+                status={char.status}
+                type={char.type}
+              />
+            </GridItem>
           ))}
-        </HStack>
+        </Grid>
       </Box>
     </Box>
   );

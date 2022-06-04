@@ -40,7 +40,7 @@ const CharacterCard: FC<CharacterCardModel> = ({
     <Box
       bg={cardBg}
       borderRadius={8}
-      w="250px"
+      w="full"
       h="full"
       transition="background-color .2s ease-in-out"
     >
@@ -101,7 +101,7 @@ const CharacterCard: FC<CharacterCardModel> = ({
               </Badge>
             )}
           </HStack>
-          <Box mt={2} w="full">
+          <Box mt={8} w="full">
             <ButtonGroup
               flexDir="column"
               alignItems="center"
