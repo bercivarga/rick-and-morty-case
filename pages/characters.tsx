@@ -1,4 +1,4 @@
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, HStack, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 
@@ -18,21 +18,23 @@ const Characters = () => {
     })();
   }, []);
 
+  const bannerBg = useColorModeValue("gray.300", "gray.700");
+
   if (!characters) {
     return <h1>Loading...</h1>;
   }
 
   return (
     <Box h="full" w="full">
-      <Box h="150px">
-        <Text as="h1" fontSize="4xl">
+      <Flex align="center" h="100px" px={6} bg={bannerBg}>
+        <Text as="h1" fontSize="5xl" fontWeight="bold">
           Characters
         </Text>
-      </Box>
+      </Flex>
       <HStack
         gap={4}
         p={6}
-        h="calc(100% - 150px)"
+        h="calc(100% - 100px)"
         overflowY="scroll"
         flexWrap="wrap"
       >

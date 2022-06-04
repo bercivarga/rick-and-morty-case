@@ -34,7 +34,7 @@ const CharacterCard: FC<CharacterCardModel> = ({
   type,
   location,
 }) => {
-  const cardBg = useColorModeValue("gray.50", "gray.800");
+  const cardBg = useColorModeValue("gray.100", "gray.800");
 
   return (
     <Box
@@ -111,6 +111,7 @@ const CharacterCard: FC<CharacterCardModel> = ({
               w="full"
             >
               <Button whiteSpace="normal">Last seen @ {location.name} </Button>
+              <Divider w="20%" my={2} />
               <Button whiteSpace="normal">Episodes </Button>
             </ButtonGroup>
           </Box>
