@@ -7,12 +7,10 @@ import {
   useColorModeValue,
   ButtonGroup,
   Button,
-  Icon,
   Badge,
   HStack,
 } from "@chakra-ui/react";
 import { FC } from "react";
-import { MdArrowForward } from "react-icons/md";
 
 interface CharacterCardModel {
   image: string;
@@ -42,8 +40,8 @@ const CharacterCard: FC<CharacterCardModel> = ({
     <Box
       bg={cardBg}
       borderRadius={8}
-      w="min-content"
-      h="min-content"
+      w="250px"
+      h="400px"
       transition="background-color .2s ease-in-out"
     >
       <Flex direction="column" h="full" align="center">
@@ -57,7 +55,13 @@ const CharacterCard: FC<CharacterCardModel> = ({
               objectFit="cover"
             />
           </Box>
-          <Text as="h4" fontSize="2xl" fontWeight="bold" marginTop={3}>
+          <Text
+            as="h4"
+            fontSize="2xl"
+            fontWeight="bold"
+            marginTop={3}
+            textAlign="center"
+          >
             {name}
           </Text>
           <Divider />
@@ -70,58 +74,44 @@ const CharacterCard: FC<CharacterCardModel> = ({
           align="flex-start"
         >
           <HStack
-            spacing={4}
+            gap={1}
             alignContent="center"
             justify="center"
             w="full"
             flexWrap="wrap"
             textTransform="capitalize"
           >
-            <Badge p={1} colorScheme="rnmYellow">
+            <Badge title="Status" p={1} colorScheme="rnmYellow">
               🫀 {status}
             </Badge>
-            <Badge p={1} colorScheme="rnmBlue">
+            <Badge title="Gender" p={1} colorScheme="rnmBlue">
               ⚤ {gender}
             </Badge>
-            <Badge p={1} colorScheme="rnmMagenta">
+            <Badge title="Species" p={1} colorScheme="rnmMagenta">
               🧬 {species}
             </Badge>
             {type && (
-              <Badge p={1} colorScheme="rnmRed">
+              <Badge
+                title="Type"
+                p={1}
+                colorScheme="rnmRed"
+                whiteSpace="normal"
+              >
                 🦄 {type}
               </Badge>
             )}
           </HStack>
-          <Box mt={2}>
+          <Box mt={2} w="full">
             <ButtonGroup
               flexDir="column"
               alignItems="center"
               variant="link"
-              colorScheme="gray"
+              colorScheme="rnmBlue"
               spacing={0}
+              w="full"
             >
-              <Button
-                rightIcon={
-                  <Icon
-                    as={MdArrowForward}
-                    fontSize="xl"
-                    color="rnmGreen.400"
-                  />
-                }
-              >
-                Last seen: @{location.name}
-              </Button>
-              <Button
-                rightIcon={
-                  <Icon
-                    as={MdArrowForward}
-                    fontSize="xl"
-                    color="rnmGreen.400"
-                  />
-                }
-              >
-                Episodes
-              </Button>
+              <Button whiteSpace="normal">Last seen @ {location.name} </Button>
+              <Button whiteSpace="normal">Episodes </Button>
             </ButtonGroup>
           </Box>
         </Flex>
