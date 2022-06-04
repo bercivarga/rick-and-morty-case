@@ -3,7 +3,9 @@ import { Box, Text } from "@chakra-ui/react";
 const Home = () => {
   return (
     <Box>
-      <Text fontSize="xl">Hello world!</Text>
+      <Text as="h2" fontSize="4xl" fontWeight="bold">
+        Home page
+      </Text>
     </Box>
   );
 };
