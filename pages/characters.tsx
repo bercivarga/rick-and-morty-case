@@ -31,25 +31,21 @@ const Characters = () => {
           Characters
         </Text>
       </Flex>
-      <HStack
-        gap={4}
-        p={6}
-        h="calc(100% - 100px)"
-        overflowY="scroll"
-        flexWrap="wrap"
-      >
-        {characters.map((char) => (
-          <CharacterCard
-            gender={char.gender}
-            image={char.image}
-            location={char.location}
-            name={char.name}
-            species={char.species}
-            status={char.status}
-            type={char.type}
-          />
-        ))}
-      </HStack>
+      <Box h="calc(100% - 100px)" overflowY="scroll" p={6}>
+        <HStack h="unset" gap={4} spacing={0} flexWrap="wrap">
+          {characters.map((char) => (
+            <CharacterCard
+              gender={char.gender}
+              image={char.image}
+              location={char.location}
+              name={char.name}
+              species={char.species}
+              status={char.status}
+              type={char.type}
+            />
+          ))}
+        </HStack>
+      </Box>
     </Box>
   );
 };

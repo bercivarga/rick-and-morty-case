@@ -41,7 +41,7 @@ const CharacterCard: FC<CharacterCardModel> = ({
       bg={cardBg}
       borderRadius={8}
       w="250px"
-      h="400px"
+      h="full"
       transition="background-color .2s ease-in-out"
     >
       <Flex direction="column" h="full" align="center">
@@ -84,7 +84,7 @@ const CharacterCard: FC<CharacterCardModel> = ({
             <Badge title="Status" p={1} colorScheme="rnmYellow">
               🫀 {status}
             </Badge>
-            <Badge title="Gender" p={1} colorScheme="rnmBlue">
+            <Badge title="Gender" p={1} colorScheme="green">
               ⚤ {gender}
             </Badge>
             <Badge title="Species" p={1} colorScheme="rnmMagenta">
