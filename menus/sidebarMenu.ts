@@ -1,4 +1,10 @@
-import { MdHomeFilled, MdPerson, MdHourglassBottom } from "react-icons/md";
+import {
+  MdHomeFilled,
+  MdPerson,
+  MdLocationPin,
+  MdPersonAdd,
+} from "react-icons/md";
+import { IoMdPlanet } from "react-icons/io";
 
 const sidebarMenuItems = [
   {
@@ -13,17 +19,17 @@ const sidebarMenuItems = [
   },
   {
     name: "Locations",
-    icon: MdHourglassBottom,
+    icon: MdLocationPin,
     path: "/locations",
   },
   {
     name: "Dimensions",
-    icon: MdHourglassBottom,
+    icon: IoMdPlanet,
     path: "/dimensions",
   },
   {
     name: "Character builder",
-    icon: MdHourglassBottom,
+    icon: MdPersonAdd,
     path: "/character-builder",
   },
 ];
