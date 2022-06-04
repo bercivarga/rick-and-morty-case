@@ -47,18 +47,28 @@ const Sidebar = () => {
 
   return (
     <>
-      <IconButton
-        aria-label="menu"
-        icon={<MdMenu />}
-        color={buttonColor}
-        colorScheme="gray"
+      <Flex
         display={sidebarToggleDisplay}
+        bg={sidebarBg}
+        w="100vw"
+        h="80px"
+        px={6}
         position="absolute"
-        top={6}
-        left={6}
+        top={0}
+        left={0}
         zIndex={2}
-        onClick={() => onBurgerClick()}
-      />
+        justify="space-between"
+        align="center"
+      >
+        <IconButton
+          aria-label="menu"
+          icon={<MdMenu />}
+          color={buttonColor}
+          colorScheme="gray"
+          onClick={() => onBurgerClick()}
+        />
+        <NextImage src="/rnm_portal.png" width={32} height={32} />
+      </Flex>
       <Flex
         ref={ref}
         w="250px"

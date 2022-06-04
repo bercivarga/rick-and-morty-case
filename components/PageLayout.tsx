@@ -1,22 +1,26 @@
 import { FC, ReactNode } from "react";
-import { Box, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import Sidebar from "./Sidebar";
+import usePageLayout from "../hooks/usePageLayout";
 
 const PageLayout: FC<{ children: ReactNode }> = ({ children }) => {
-  const bgColor = useColorModeValue("white", "gray.900");
-  const mainContentWidth = useBreakpointValue({
-    base: "full",
-    md: "calc(100vw - 250px)",
-  });
+  const {
+    bgColor,
+    mainContentBottom,
+    mainContentHeight,
+    mainContentTop,
+    mainContentWidth,
+  } = usePageLayout();
 
   return (
     <Box w="100vw" h="100vh">
       <Sidebar />
       <Box
         position="absolute"
-        top={0}
+        top={mainContentTop}
+        bottom={mainContentBottom}
         right={0}
-        h="full"
+        h={mainContentHeight}
         w={mainContentWidth}
         bg={bgColor}
       >
