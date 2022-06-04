@@ -12,9 +12,19 @@ const sidebarMenuItems = [
     path: "/characters",
   },
   {
-    name: "Plumbus!",
+    name: "Locations",
     icon: MdHourglassBottom,
-    path: "/plumbus",
+    path: "/locations",
+  },
+  {
+    name: "Dimensions",
+    icon: MdHourglassBottom,
+    path: "/dimensions",
+  },
+  {
+    name: "Character builder",
+    icon: MdHourglassBottom,
+    path: "/character-builder",
   },
 ];
 
