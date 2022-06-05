@@ -32,7 +32,7 @@ interface ResponseModel {
   };
 }
 
-interface QueryVars {
+export interface QueryVars {
   name?: string;
   status?: "alive" | "dead" | "unknown";
   species?: string;
