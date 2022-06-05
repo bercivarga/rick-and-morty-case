@@ -38,6 +38,7 @@ export interface QueryVars {
   species?: string;
   type?: string;
   gender?: "female" | "male" | "genderless" | "unknown";
+  page?: number;
 }
 
 export const GET_ALL_CHARACTERS = gql`
@@ -47,8 +48,10 @@ export const GET_ALL_CHARACTERS = gql`
     $species: String
     $type: String
     $gender: String
+    $page: Int
   ) {
     characters(
+      page: $page
       filter: {
         name: $name
         status: $status
@@ -82,10 +85,11 @@ export const GET_ALL_CHARACTERS = gql`
   }
 `;
 
-export default function useGetCharacters(filter: QueryVars) {
+export default function useGetCharacters(filter: QueryVars, page: number = 1) {
   return useQuery<ResponseModel, QueryVars>(GET_ALL_CHARACTERS, {
     variables: {
       ...filter,
+      page,
     },
   });
 }
