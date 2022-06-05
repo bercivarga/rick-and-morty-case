@@ -19,7 +19,6 @@ const CharacterGrid: FC<{
   pagesCount: number;
   prevPage: number;
   nextPage: number;
-  // eslint-disable-next-line no-unused-vars
   handlePageSwitch: (pageNr: number) => void;
 }> = ({
   loading,

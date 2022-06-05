@@ -15,6 +15,10 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
+    "no-unused-vars": [
+      "error",
+      { vars: "all", args: "none", ignoreRestSiblings: false },
+    ],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",

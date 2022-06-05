@@ -13,7 +13,6 @@ import { QueryVars } from "../queries/characters";
 type StatusType = "alive" | "dead" | "unknown";
 type GenderType = "female" | "male" | "genderless" | "unknown";
 
-// eslint-disable-next-line no-unused-vars
 const FilterMenu: FC<{ onSubmit: (filters: QueryVars) => void }> = ({
   onSubmit,
 }) => {

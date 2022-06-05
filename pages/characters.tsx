@@ -23,7 +23,7 @@ const Characters = () => {
   }
 
   return (
-    <PathLayout title="characters">
+    <PathLayout title="characters" currentPage={currentPage}>
       <Box mb={6}>
         <FilterMenu onSubmit={(newFilters) => setFilters({ ...newFilters })} />
       </Box>

@@ -1,10 +1,17 @@
 import { Box, Text, Flex, useColorModeValue } from "@chakra-ui/react";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect, useRef } from "react";
 
-const PathLayout: FC<{ title: string; children: ReactNode }> = ({
-  title,
-  children,
-}) => {
+const PathLayout: FC<{
+  title: string;
+  children: ReactNode;
+  currentPage?: number;
+}> = ({ title, children, currentPage }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    ref.current?.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
   const bannerBg = useColorModeValue("rnmBlue.600", "gray.700");
 
   return (
@@ -20,11 +27,15 @@ const PathLayout: FC<{ title: string; children: ReactNode }> = ({
           {title}
         </Text>
       </Flex>
-      <Box h="calc(100% - 100px)" overflowY="scroll" p={6}>
+      <Box ref={ref} h="calc(100% - 100px)" overflowY="scroll" p={6}>
         {children}
       </Box>
     </Box>
   );
+};
+
+PathLayout.defaultProps = {
+  currentPage: undefined,
 };
 
 export default PathLayout;
