@@ -3,15 +3,16 @@ import {
   Flex,
   Grid,
   GridItem,
+  Skeleton,
   Text,
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
+import useGetCharacters from "../queries/characters";
 
 const Characters = () => {
-  const [characters, setCharacters] = useState<any[]>();
+  const { loading, data, error } = useGetCharacters({});
 
   const gridRows = useBreakpointValue({
     base: 1,
@@ -20,23 +21,10 @@ const Characters = () => {
     xl: 4,
   });
 
-  useEffect(() => {
-    (async function () {
-      try {
-        const res = await fetch("https://rickandmortyapi.com/api/character");
-        const data = await res.json();
-        setCharacters(data.results);
-        console.log(data);
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-  }, []);
-
   const bannerBg = useColorModeValue("gray.300", "gray.700");
 
-  if (!characters) {
-    return <h1>Loading...</h1>;
+  if (error) {
+    return <h1>Error happened</h1>;
   }
 
   return (
@@ -48,19 +36,26 @@ const Characters = () => {
       </Flex>
       <Box h="calc(100% - 100px)" overflowY="scroll" p={6}>
         <Grid h="full" templateColumns={`repeat(${gridRows}, 1fr)`} gap={4}>
-          {characters.map((char) => (
-            <GridItem rowSpan={1} colSpan={1}>
-              <CharacterCard
-                gender={char.gender}
-                image={char.image}
-                location={char.location}
-                name={char.name}
-                species={char.species}
-                status={char.status}
-                type={char.type}
-              />
-            </GridItem>
-          ))}
+          {loading &&
+            new Array(20).fill(1).map(() => (
+              <GridItem key={Math.random()} rowSpan={1} colSpan={1}>
+                <Skeleton h="300px" />
+              </GridItem>
+            ))}
+          {!loading &&
+            data?.characters.results.map((char: any) => (
+              <GridItem key={char.id} rowSpan={1} colSpan={1}>
+                <CharacterCard
+                  gender={char.gender}
+                  image={char.image}
+                  location={char.location}
+                  name={char.name}
+                  species={char.species}
+                  status={char.status}
+                  type={char.type}
+                />
+              </GridItem>
+            ))}
         </Grid>
       </Box>
     </Box>

@@ -100,20 +100,19 @@ const Sidebar = () => {
           </Flex>
           <List spacing={4} marginTop={6}>
             {sidebarMenuItems.map((menuItem) => (
-              <ListItem
-                key={menuItem.name}
-                as={Button}
-                leftIcon={<menuItem.icon />}
-                fontSize="xl"
-                variant="solid"
-                colorScheme="gray"
-                color={buttonColor}
-                alignItems="center"
-                display="flex"
-                w="full"
-              >
-                <LinkBox w="full" textAlign="left" alignItems="center">
-                  <NextLink href={menuItem.path} passHref>
+              <NextLink key={menuItem.name} href={menuItem.path} passHref>
+                <ListItem
+                  as={Button}
+                  leftIcon={<menuItem.icon />}
+                  fontSize="xl"
+                  variant="solid"
+                  colorScheme="gray"
+                  color={buttonColor}
+                  alignItems="center"
+                  display="flex"
+                  w="full"
+                >
+                  <LinkBox w="full" textAlign="left" alignItems="center">
                     <LinkOverlay
                       textAlign="left"
                       w="full"
@@ -122,9 +121,9 @@ const Sidebar = () => {
                     >
                       {menuItem.name}
                     </LinkOverlay>
-                  </NextLink>
-                </LinkBox>
-              </ListItem>
+                  </LinkBox>
+                </ListItem>
+              </NextLink>
             ))}
           </List>
         </Box>
