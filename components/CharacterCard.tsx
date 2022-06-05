@@ -104,7 +104,10 @@ const CharacterCard: FC<CharacterModel> = ({
               <Divider w="20%" my={2} />
               <Button whiteSpace="normal">Last seen @ {location.name}</Button>
               <Divider w="20%" my={2} />
-              <Button whiteSpace="normal">In {episodes.length} episodes</Button>
+              <Button whiteSpace="normal">
+                In {episodes.length}{" "}
+                {episodes.length > 1 ? "episodes" : "episode"}
+              </Button>
             </ButtonGroup>
           </Box>
         </Flex>
