@@ -28,6 +28,11 @@ export interface CharacterModel {
 
 interface ResponseModel {
   characters: {
+    info: {
+      pages: number;
+      prev: number;
+      next: number;
+    };
     results: CharacterModel[];
   };
 }
@@ -60,6 +65,11 @@ export const GET_ALL_CHARACTERS = gql`
         gender: $gender
       }
     ) {
+      info {
+        pages
+        prev
+        next
+      }
       results {
         id
         name
