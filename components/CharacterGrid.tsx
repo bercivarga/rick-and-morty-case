@@ -14,12 +14,12 @@ import { CharacterModel } from "../queries/characters";
 import CharacterCard from "./CharacterCard";
 
 const CharacterGrid: FC<{
-  loading: boolean;
   characters: CharacterModel[] | undefined;
-  pagesCount: number;
-  prevPage: number;
-  nextPage: number;
-  handlePageSwitch: (pageNr: number) => void;
+  loading?: boolean;
+  pagesCount?: number;
+  prevPage?: number;
+  nextPage?: number;
+  handlePageSwitch?: (pageNr: number) => void;
 }> = ({
   loading,
   characters,
@@ -63,7 +63,7 @@ const CharacterGrid: FC<{
           </Box>
         )}
       </Grid>
-      <Box w="full" mt={6}>
+      <Box w="full" mt={6} display={(pagesCount ?? 0) > 1 ? "block" : "none"}>
         <ButtonGroup
           variant="solid"
           colorScheme="gray"
@@ -76,20 +76,28 @@ const CharacterGrid: FC<{
           <IconButton
             aria-label="previous"
             icon={<MdSkipPrevious />}
-            onClick={() => handlePageSwitch(prevPage)}
+            onClick={() => handlePageSwitch?.call({}, prevPage ?? 1)}
           />
           <Text>
-            Page {nextPage - 1 ?? prevPage + 1} of {pagesCount}
+            Page {(nextPage ?? 1) - 1 ?? (prevPage ?? 1) + 1} of {pagesCount}
           </Text>
           <IconButton
             aria-label="previous"
             icon={<MdSkipNext />}
-            onClick={() => handlePageSwitch(nextPage)}
+            onClick={() => handlePageSwitch?.call({}, nextPage ?? 1)}
           />
         </ButtonGroup>
       </Box>
     </Box>
   );
+};
+
+CharacterGrid.defaultProps = {
+  nextPage: 0,
+  prevPage: 0,
+  pagesCount: 0,
+  loading: false,
+  handlePageSwitch: () => undefined,
 };
 
 export default CharacterGrid;
