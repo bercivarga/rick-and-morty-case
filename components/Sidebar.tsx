@@ -112,7 +112,12 @@ const Sidebar = () => {
                   display="flex"
                   w="full"
                 >
-                  <LinkBox w="full" textAlign="left" alignItems="center">
+                  <LinkBox
+                    w="full"
+                    textAlign="left"
+                    alignItems="center"
+                    onClick={() => setSidebarOpen(false)}
+                  >
                     <LinkOverlay
                       textAlign="left"
                       w="full"

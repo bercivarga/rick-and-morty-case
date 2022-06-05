@@ -1,4 +1,11 @@
-import { Grid, GridItem, Skeleton, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Grid,
+  GridItem,
+  Skeleton,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { FC } from "react";
 import { CharacterModel } from "../queries/characters";
 import CharacterCard from "./CharacterCard";
@@ -10,8 +17,8 @@ const CharacterGrid: FC<{
   const gridRows = useBreakpointValue({
     base: 1,
     sm: 2,
-    lg: 3,
-    xl: 4,
+    "2xl": 4,
+    "3xl": 6,
   });
 
   return (
@@ -28,6 +35,18 @@ const CharacterGrid: FC<{
             <CharacterCard {...char} />
           </GridItem>
         ))}
+      {!loading && characters?.length === 0 && (
+        <Box
+          w="full"
+          h="min-content"
+          borderRadius={4}
+          p={6}
+          color="white"
+          bg="rnmGreen.700"
+        >
+          <Text fontSize="xl">No results found. Try again!</Text>
+        </Box>
+      )}
     </Grid>
   );
 };
