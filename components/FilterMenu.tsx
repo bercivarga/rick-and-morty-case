@@ -35,10 +35,10 @@ const FilterMenu: FC<{ onSubmit: (filters: QueryVars) => void }> = ({
   }
 
   function clearFilters() {
-    setName(undefined);
+    setName("");
     setStatus(undefined);
-    setSpecies(undefined);
-    setType(undefined);
+    setSpecies("");
+    setType("");
     setGender(undefined);
     onSubmit({});
   }
