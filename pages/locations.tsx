@@ -2,7 +2,6 @@ import { ApolloError } from "@apollo/client";
 import { Text, Flex, Divider } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
 import { FC } from "react";
-import NextLink from "next/link";
 import ErrorCard from "../components/ErrorCard";
 import PathLayout from "../components/PathLayout";
 import client from "../lib/client";
@@ -20,38 +19,29 @@ const Locations: FC<{
     <PathLayout title="Locations">
       <Flex h="full" flexWrap="wrap" gap={4}>
         {locations.map((location) => (
-          <NextLink
-            key={location.id}
-            href={{
-              pathname: "/locations/[id]",
-              query: { id: location.id },
-            }}
-            passHref
+          <Flex
+            color="black"
+            bg="rnmBlue.100"
+            textAlign="left"
+            h="min-content"
+            flexDir="column"
+            p={6}
+            textTransform="capitalize"
+            borderRadius={4}
           >
-            <Flex
-              color="black"
-              bg="rnmBlue.100"
-              textAlign="left"
-              h="min-content"
-              flexDir="column"
-              p={6}
-              textTransform="capitalize"
-              borderRadius={4}
-            >
-              <Text fontSize="xl" fontWeight="bold">
-                {location.name}
-              </Text>
-              <Divider mt={2} />
-              <Text marginTop={4}>
-                📍{" "}
-                {location.dimension === "unknown"
-                  ? "Unknown location"
-                  : `Located in ${location.dimension}`}
-              </Text>
-              <Text mt={2}>🪐 Type of {location.type}</Text>
-              <Text mt={2}>👶 Residents: {location.residents.length}</Text>
-            </Flex>
-          </NextLink>
+            <Text fontSize="xl" fontWeight="bold">
+              {location.name}
+            </Text>
+            <Divider mt={2} />
+            <Text marginTop={4}>
+              📍{" "}
+              {location.dimension === "unknown"
+                ? "Unknown location"
+                : `Located in ${location.dimension}`}
+            </Text>
+            <Text mt={2}>🪐 Type of {location.type}</Text>
+            <Text mt={2}>👶 Residents: {location.residents.length}</Text>
+          </Flex>
         ))}
       </Flex>
     </PathLayout>
