@@ -11,21 +11,9 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { FC } from "react";
+import { CharacterModel } from "../queries/characters";
 
-interface CharacterCardModel {
-  image: string;
-  name: string;
-  status: string;
-  gender: string;
-  species: string;
-  type: string;
-  location: {
-    name: string;
-    url: string;
-  };
-}
-
-const CharacterCard: FC<CharacterCardModel> = ({
+const CharacterCard: FC<CharacterModel> = ({
   image,
   name,
   status,
@@ -33,6 +21,8 @@ const CharacterCard: FC<CharacterCardModel> = ({
   species,
   type,
   location,
+  origin,
+  episodes,
 }) => {
   const cardBg = useColorModeValue("gray.100", "gray.800");
 
@@ -110,9 +100,11 @@ const CharacterCard: FC<CharacterCardModel> = ({
               spacing={0}
               w="full"
             >
-              <Button whiteSpace="normal">Last seen @ {location.name} </Button>
+              <Button whiteSpace="normal">Origin: {origin.name}</Button>
               <Divider w="20%" my={2} />
-              <Button whiteSpace="normal">Episodes </Button>
+              <Button whiteSpace="normal">Last seen @ {location.name}</Button>
+              <Divider w="20%" my={2} />
+              <Button whiteSpace="normal">In {episodes.length} episodes</Button>
             </ButtonGroup>
           </Box>
         </Flex>

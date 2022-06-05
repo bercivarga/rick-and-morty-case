@@ -1,5 +1,6 @@
 import {
   Box,
+  Divider,
   Flex,
   Grid,
   GridItem,
@@ -24,7 +25,16 @@ const Characters = () => {
   const bannerBg = useColorModeValue("gray.300", "gray.700");
 
   if (error) {
-    return <h1>Error happened</h1>;
+    return (
+      <Box p={6}>
+        <Box color="white" bg="red.600" p={6}>
+          <Text>Something went wrong while handling your request.</Text>
+          <Text>Please try again later, or notify the maintainer.</Text>
+          <Divider my={2} />
+          <pre>{error.message}</pre>
+        </Box>
+      </Box>
+    );
   }
 
   return (
@@ -43,17 +53,9 @@ const Characters = () => {
               </GridItem>
             ))}
           {!loading &&
-            data?.characters.results.map((char: any) => (
+            data?.characters.results.map((char) => (
               <GridItem key={char.id} rowSpan={1} colSpan={1}>
-                <CharacterCard
-                  gender={char.gender}
-                  image={char.image}
-                  location={char.location}
-                  name={char.name}
-                  species={char.species}
-                  status={char.status}
-                  type={char.type}
-                />
+                <CharacterCard {...char} />
               </GridItem>
             ))}
         </Grid>

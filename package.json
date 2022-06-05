@@ -1,6 +1,7 @@
 {
   "name": "gracious-assignment",
   "version": "0.1.0",
+  "author": {"name": "Berci Varga", "email": "hello@berci.dev", "url": "https://berci.dev"},
   "private": true,
   "scripts": {
     "dev": "next dev",
