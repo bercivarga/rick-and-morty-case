@@ -9,6 +9,7 @@ const PathLayout: FC<{
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (!currentPage) return;
     ref.current?.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
