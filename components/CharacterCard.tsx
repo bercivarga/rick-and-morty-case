@@ -5,8 +5,6 @@ import {
   Divider,
   Text,
   useColorModeValue,
-  ButtonGroup,
-  Button,
   Badge,
   HStack,
 } from "@chakra-ui/react";
@@ -25,6 +23,7 @@ const CharacterCard: FC<CharacterModel> = ({
   episodes,
 }) => {
   const cardBg = useColorModeValue("gray.100", "gray.800");
+  const infoColor = useColorModeValue("rnmBlue.900", "rnmBlue.200");
 
   return (
     <Box
@@ -92,23 +91,22 @@ const CharacterCard: FC<CharacterModel> = ({
             )}
           </HStack>
           <Box mt={8} w="full">
-            <ButtonGroup
+            <Flex
               flexDir="column"
               alignItems="center"
-              variant="link"
-              colorScheme="rnmBlue"
-              spacing={0}
+              color={infoColor}
               w="full"
+              textAlign="center"
             >
-              <Button whiteSpace="normal">Origin: {origin.name}</Button>
+              <Text whiteSpace="normal">Origin: {origin.name}</Text>
               <Divider w="20%" my={2} />
-              <Button whiteSpace="normal">Last seen @ {location.name}</Button>
+              <Text whiteSpace="normal">Last seen @ {location.name}</Text>
               <Divider w="20%" my={2} />
-              <Button whiteSpace="normal">
+              <Text whiteSpace="normal">
                 In {episodes.length}{" "}
                 {episodes.length > 1 ? "episodes" : "episode"}
-              </Button>
-            </ButtonGroup>
+              </Text>
+            </Flex>
           </Box>
         </Flex>
       </Flex>
