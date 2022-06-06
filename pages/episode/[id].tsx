@@ -5,37 +5,36 @@ import CharacterGrid from "../../components/CharacterGrid";
 import ErrorCard from "../../components/ErrorCard";
 import PathLayout from "../../components/PathLayout";
 import client from "../../lib/client";
-import { GET_LOCATION } from "../../queries/location";
-import { LocationModel } from "../../queries/locations";
+import { EpisodeModel, GET_EPISODE } from "../../queries/episode";
 
-const Location: FC<{ error: ApolloError | null; location: LocationModel }> = ({
+const Episode: FC<{ error: ApolloError | null; episode: EpisodeModel }> = ({
   error,
-  location,
+  episode,
 }) => {
   if (error) {
     return <ErrorCard errorMessage={error.message} />;
   }
 
   return (
-    <PathLayout title={`${location.name}'s residents`}>
+    <PathLayout title={`${episode.name}'s cast`}>
       {" "}
-      <CharacterGrid characters={location.residents} />
+      <CharacterGrid characters={episode.characters} />
     </PathLayout>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const res = await client.query({
-    query: GET_LOCATION,
+    query: GET_EPISODE,
     variables: { id: query.id },
   });
 
   return {
     props: {
       error: res.error?.message ?? null,
-      location: res.data.location,
+      episode: res.data.episode,
     },
   };
 };
 
-export default Location;
+export default Episode;

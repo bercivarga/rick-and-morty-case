@@ -1,5 +1,5 @@
 import { MdHomeFilled, MdPerson, MdPersonAdd } from "react-icons/md";
-import { IoMdPlanet } from "react-icons/io";
+import { IoMdFilm, IoMdPlanet } from "react-icons/io";
 
 const sidebarMenuItems = [
   {
@@ -16,6 +16,11 @@ const sidebarMenuItems = [
     name: "Locations",
     icon: IoMdPlanet,
     path: "/locations",
+  },
+  {
+    name: "Episodes",
+    icon: IoMdFilm,
+    path: "/episodes",
   },
   {
     name: "Character builder",
