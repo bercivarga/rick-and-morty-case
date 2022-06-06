@@ -3,11 +3,11 @@ import generateSentence from "../../lib/generateSentence";
 import openai from "../../lib/openai";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { name, species, gender, planet } = req.body;
+  const { name, species, planet } = JSON.parse(req.body);
 
   try {
     const response = await openai.createCompletion("text-davinci-002", {
-      prompt: generateSentence({ name, species, gender, planet }),
+      prompt: generateSentence({ name, species, planet }),
       temperature: 0.7,
       max_tokens: 256,
       top_p: 1,

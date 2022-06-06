@@ -1,12 +1,11 @@
-interface SentenceModel {
+export interface SentenceModel {
   name: string;
-  gender: string;
   species: string;
   planet: string;
 }
 
-const generateSentence = ({ name, gender, species, planet }: SentenceModel) => {
-  return `Generate a backstory for a ${gender} gendered ${species} names ${name} from the planet ${planet}`;
+const generateSentence = ({ name, species, planet }: SentenceModel) => {
+  return `Generate a wacky backstory for a new Rick and Morty character who is a ${species} called ${name} from the planet ${planet}`;
 };
 
 export default generateSentence;

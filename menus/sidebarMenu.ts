@@ -23,9 +23,9 @@ const sidebarMenuItems = [
     path: "/episodes",
   },
   {
-    name: "Backstory generator",
+    name: "Character generator",
     icon: MdHistoryEdu,
-    path: "/backstory-generator",
+    path: "/generator",
   },
 ];
 
