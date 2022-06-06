@@ -1,5 +1,6 @@
 import { ApolloError } from "@apollo/client";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import { FC } from "react";
 import CharacterGrid from "../../components/CharacterGrid";
 import ErrorCard from "../../components/ErrorCard";
@@ -18,7 +19,9 @@ const Location: FC<{ error: ApolloError | null; location: LocationModel }> = ({
 
   return (
     <PathLayout title={`${location.name}'s residents`}>
-      {" "}
+      <Head>
+        <title>{location.name}&apos;s residents</title>
+      </Head>
       <CharacterGrid characters={location.residents} />
     </PathLayout>
   );

@@ -1,5 +1,6 @@
 import { ApolloError } from "@apollo/client";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import { FC } from "react";
 import CharacterGrid from "../../components/CharacterGrid";
 import ErrorCard from "../../components/ErrorCard";
@@ -17,7 +18,9 @@ const Episode: FC<{ error: ApolloError | null; episode: EpisodeModel }> = ({
 
   return (
     <PathLayout title={`${episode.name}'s cast`}>
-      {" "}
+      <Head>
+        <title>{episode.name}&apos;s cast</title>
+      </Head>
       <CharacterGrid characters={episode.characters} />
     </PathLayout>
   );

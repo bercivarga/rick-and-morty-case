@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 import ErrorCard from "../components/ErrorCard";
 import PathLayout from "../components/PathLayout";
 import { useGetLocations } from "../queries/locations";
@@ -15,6 +16,9 @@ const Locations = () => {
 
   return (
     <PathLayout title="All locations" currentPage={currentPage}>
+      <Head>
+        <title>All locations</title>
+      </Head>
       <ListGrid
         loading={loading}
         uriPath="location"

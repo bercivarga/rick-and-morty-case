@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import CharacterGrid from "../components/CharacterGrid";
 import ErrorCard from "../components/ErrorCard";
@@ -25,6 +26,9 @@ const Characters = () => {
 
   return (
     <PathLayout title="All characters" currentPage={currentPage}>
+      <Head>
+        <title>All characters</title>
+      </Head>
       <Box mb={6}>
         <FilterMenu
           loading={loading}

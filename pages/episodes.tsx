@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 import ErrorCard from "../components/ErrorCard";
 import PaginationNav from "../components/PaginationNav";
 import PathLayout from "../components/PathLayout";
@@ -15,6 +16,9 @@ const Episodes = () => {
 
   return (
     <PathLayout title="All episodes" currentPage={currentPage}>
+      <Head>
+        <title>All episodes</title>
+      </Head>
       <ListGrid
         loading={loading}
         uriPath="episode"

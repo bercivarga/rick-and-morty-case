@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { FormEvent, useEffect, useState } from "react";
 import { GiFrankensteinCreature } from "react-icons/gi";
+import Head from "next/head";
 import PathLayout from "../components/PathLayout";
 import useGenerator from "../hooks/useGenerator";
 import { SentenceModel } from "../lib/generateSentence";
@@ -70,6 +71,9 @@ const Generator = () => {
 
   return (
     <PathLayout title="Generator">
+      <Head>
+        <title>Character backstory generator</title>
+      </Head>
       <Box w={textWidth}>
         <Text as="h2" fontSize="2xl" fontWeight="bold">
           Generate your own Rick and Morty character!
