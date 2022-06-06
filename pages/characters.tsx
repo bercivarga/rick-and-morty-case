@@ -26,7 +26,10 @@ const Characters = () => {
   return (
     <PathLayout title="All characters" currentPage={currentPage}>
       <Box mb={6}>
-        <FilterMenu onSubmit={(newFilters) => setFilters({ ...newFilters })} />
+        <FilterMenu
+          loading={loading}
+          onSubmit={(newFilters) => setFilters({ ...newFilters })}
+        />
       </Box>
       <CharacterGrid characters={data?.characters.results} loading={loading} />
       <PaginationNav

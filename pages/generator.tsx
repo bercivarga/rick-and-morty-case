@@ -40,7 +40,7 @@ const Generator = () => {
 
   const textWidth = useBreakpointValue({
     base: "full",
-    xl: "50%",
+    xl: "60%",
   });
 
   const gridColumns = useBreakpointValue({
@@ -77,7 +77,7 @@ const Generator = () => {
         <Text>
           Type in your character&apos;s name, species, and home planet, and let{" "}
           <Link
-            color="green.400"
+            color="rnmBlue.400"
             href="https://openai.com/api/"
             target="_blank"
           >
@@ -161,10 +161,8 @@ const Generator = () => {
         >
           {data && (
             <Fade in={!!data}>
-              <Text>
-                <Text fontSize="lg" fontStyle="italic">
-                  &quot;{data}&quot;
-                </Text>
+              <Text fontSize="lg" fontStyle="italic">
+                &quot;{data}&quot;
               </Text>
             </Fade>
           )}

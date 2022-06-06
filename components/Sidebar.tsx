@@ -105,7 +105,7 @@ const Sidebar = () => {
                   as={Button}
                   leftIcon={<menuItem.icon />}
                   fontSize="xl"
-                  variant="solid"
+                  variant="outline"
                   colorScheme="gray"
                   color={buttonColor}
                   alignItems="center"

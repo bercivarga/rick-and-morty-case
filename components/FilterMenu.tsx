@@ -16,9 +16,10 @@ import { QueryVars } from "../queries/characters";
 type StatusType = "alive" | "dead" | "unknown";
 type GenderType = "female" | "male" | "genderless" | "unknown";
 
-const FilterMenu: FC<{ onSubmit: (filters: QueryVars) => void }> = ({
-  onSubmit,
-}) => {
+const FilterMenu: FC<{
+  loading: boolean;
+  onSubmit: (filters: QueryVars) => void;
+}> = ({ loading, onSubmit }) => {
   const [name, setName] = useState<string>();
   const [status, setStatus] = useState<StatusType>();
   const [species, setSpecies] = useState<string>();
@@ -141,6 +142,7 @@ const FilterMenu: FC<{ onSubmit: (filters: QueryVars) => void }> = ({
               icon={<MdSearch />}
               variant="solid"
               colorScheme="green"
+              isLoading={loading}
             />
             <IconButton
               type="button"
