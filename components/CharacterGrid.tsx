@@ -5,29 +5,15 @@ import {
   GridItem,
   Skeleton,
   useBreakpointValue,
-  ButtonGroup,
-  IconButton,
 } from "@chakra-ui/react";
 import { FC } from "react";
-import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { CharacterModel } from "../queries/characters";
 import CharacterCard from "./CharacterCard";
 
 const CharacterGrid: FC<{
   characters: CharacterModel[] | undefined;
   loading?: boolean;
-  pagesCount?: number;
-  prevPage?: number;
-  nextPage?: number;
-  handlePageSwitch?: (pageNr: number) => void;
-}> = ({
-  loading,
-  characters,
-  prevPage,
-  nextPage,
-  pagesCount,
-  handlePageSwitch,
-}) => {
+}> = ({ loading, characters }) => {
   const gridRows = useBreakpointValue({
     base: 1,
     sm: 2,
@@ -63,41 +49,12 @@ const CharacterGrid: FC<{
           </Box>
         )}
       </Grid>
-      <Box w="full" mt={6} display={(pagesCount ?? 0) > 1 ? "block" : "none"}>
-        <ButtonGroup
-          variant="solid"
-          colorScheme="gray"
-          w="full"
-          flexDir="row"
-          justifyContent="center"
-          alignItems="center"
-          gap={2}
-        >
-          <IconButton
-            aria-label="previous"
-            icon={<MdSkipPrevious />}
-            onClick={() => handlePageSwitch?.call({}, prevPage ?? 1)}
-          />
-          <Text>
-            Page {(nextPage ?? 1) - 1 ?? (prevPage ?? 1) + 1} of {pagesCount}
-          </Text>
-          <IconButton
-            aria-label="previous"
-            icon={<MdSkipNext />}
-            onClick={() => handlePageSwitch?.call({}, nextPage ?? 1)}
-          />
-        </ButtonGroup>
-      </Box>
     </Box>
   );
 };
 
 CharacterGrid.defaultProps = {
-  nextPage: 0,
-  prevPage: 0,
-  pagesCount: 0,
   loading: false,
-  handlePageSwitch: () => undefined,
 };
 
 export default CharacterGrid;

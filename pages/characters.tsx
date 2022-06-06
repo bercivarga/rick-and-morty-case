@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CharacterGrid from "../components/CharacterGrid";
 import ErrorCard from "../components/ErrorCard";
 import FilterMenu from "../components/FilterMenu";
+import PaginationNav from "../components/PaginationNav";
 import PathLayout from "../components/PathLayout";
 import useGetCharacters, { QueryVars } from "../queries/characters";
 
@@ -27,13 +28,12 @@ const Characters = () => {
       <Box mb={6}>
         <FilterMenu onSubmit={(newFilters) => setFilters({ ...newFilters })} />
       </Box>
-      <CharacterGrid
-        characters={data?.characters.results}
-        loading={loading}
-        pagesCount={data?.characters.info.pages ?? 0}
-        prevPage={data?.characters.info.prev ?? 1}
-        nextPage={data?.characters.info.next ?? 1}
-        handlePageSwitch={(pageNr) => setCurrentPage(pageNr)}
+      <CharacterGrid characters={data?.characters.results} loading={loading} />
+      <PaginationNav
+        prevPage={data?.characters.info.prev}
+        nextPage={data?.characters.info.next}
+        pagesCount={data?.characters.info.pages}
+        handlePageSwitch={(pageNr: number) => setCurrentPage(pageNr)}
       />
     </PathLayout>
   );
