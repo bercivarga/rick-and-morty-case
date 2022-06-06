@@ -1,4 +1,4 @@
-import { MdHomeFilled, MdPerson, MdPersonAdd } from "react-icons/md";
+import { MdHistoryEdu, MdHomeFilled, MdPerson } from "react-icons/md";
 import { IoMdFilm, IoMdPlanet } from "react-icons/io";
 
 const sidebarMenuItems = [
@@ -23,9 +23,9 @@ const sidebarMenuItems = [
     path: "/episodes",
   },
   {
-    name: "Character builder",
-    icon: MdPersonAdd,
-    path: "/character-builder",
+    name: "Backstory generator",
+    icon: MdHistoryEdu,
+    path: "/backstory-generator",
   },
 ];
 
