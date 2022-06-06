@@ -4,9 +4,11 @@ import {
   Grid,
   GridItem,
   Skeleton,
+  Icon,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { FC } from "react";
+import { MdOutlineWarning } from "react-icons/md";
 import { CharacterModel } from "../queries/characters";
 import CharacterCard from "./CharacterCard";
 
@@ -43,9 +45,11 @@ const CharacterGrid: FC<{
             borderRadius={4}
             p={6}
             color="white"
-            bg="rnmGreen.700"
+            bg="rnmYellow.600"
+            fontSize="2xl"
           >
-            <Text fontSize="xl">No results found. Try again!</Text>
+            <Icon as={MdOutlineWarning} />
+            <Text>No results found.</Text>
           </Box>
         )}
       </Grid>

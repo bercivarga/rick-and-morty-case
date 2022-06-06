@@ -1,8 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 
 interface EpisodeModel {
-  name: string;
-  episode: string;
+  id: number;
 }
 
 export interface CharacterModel {
@@ -13,12 +12,12 @@ export interface CharacterModel {
   type: string;
   gender: string;
   origin: {
+    id: number;
     name: string;
-    url: string;
   };
   location: {
+    id: number;
     name: string;
-    url: string;
   };
   image: string;
   episodes: EpisodeModel[];
@@ -87,8 +86,7 @@ export const GET_ALL_CHARACTERS = gql`
         }
         image
         episodes: episode {
-          name
-          episode
+          id
         }
       }
     }

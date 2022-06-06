@@ -7,8 +7,11 @@ import {
   useColorModeValue,
   Badge,
   HStack,
+  ButtonGroup,
+  Button,
 } from "@chakra-ui/react";
 import { FC } from "react";
+import NextLink from "next/link";
 import { CharacterModel } from "../queries/characters";
 
 const CharacterCard: FC<CharacterModel> = ({
@@ -91,22 +94,52 @@ const CharacterCard: FC<CharacterModel> = ({
             )}
           </HStack>
           <Box mt={8} w="full">
-            <Flex
+            <ButtonGroup
               flexDir="column"
               alignItems="center"
               color={infoColor}
+              colorScheme="rnmBlue"
+              variant="link"
               w="full"
               textAlign="center"
             >
-              <Text whiteSpace="normal">Origin: {origin.name}</Text>
+              <NextLink
+                href={{ pathname: `/location/[id]`, query: { id: origin.id } }}
+              >
+                <Button
+                  whiteSpace="normal"
+                  disabled={origin.name === "unknown"}
+                >
+                  Origin: {origin.name}
+                </Button>
+              </NextLink>
               <Divider w="20%" my={2} />
-              <Text whiteSpace="normal">Last seen @ {location.name}</Text>
+              <NextLink
+                href={{
+                  pathname: `/location/[id]`,
+                  query: { id: location.id },
+                }}
+              >
+                <Button
+                  whiteSpace="normal"
+                  disabled={location.name === "unknown"}
+                >
+                  Last seen @ {location.name}
+                </Button>
+              </NextLink>
               <Divider w="20%" my={2} />
-              <Text whiteSpace="normal">
-                In {episodes.length}{" "}
-                {episodes.length > 1 ? "episodes" : "episode"}
-              </Text>
-            </Flex>
+              <NextLink
+                href={{
+                  pathname: `/episode/[id]`,
+                  query: { id: episodes[episodes.length - 1]?.id },
+                }}
+              >
+                <Button whiteSpace="normal" title="Go to last episode">
+                  In {episodes.length}{" "}
+                  {episodes.length > 1 ? "episodes" : "episode"} (Go to last)
+                </Button>
+              </NextLink>
+            </ButtonGroup>
           </Box>
         </Flex>
       </Flex>
