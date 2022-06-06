@@ -1,4 +1,10 @@
-import { Box, Grid, GridItem, Skeleton } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  Skeleton,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { FC } from "react";
 import NextLink from "next/link";
 import { EpisodeModel } from "../queries/episode";
@@ -18,9 +24,20 @@ const ListGrid: FC<ListGridModel> = ({
   episodes,
   locations,
 }) => {
+  const gridColumns = useBreakpointValue({
+    base: 1,
+    md: 2,
+    xl: 4,
+    "2xl": 6,
+  });
+
   return (
     <Box>
-      <Grid h="full" templateColumns="repeat(4, minmax(0, 1fr))" gap={4}>
+      <Grid
+        h="full"
+        templateColumns={`repeat(${gridColumns}, minmax(0, 1fr))`}
+        gap={4}
+      >
         {loading &&
           new Array(20).fill(1).map(() => (
             <GridItem key={Math.random()} colSpan={1} rowSpan={1}>
