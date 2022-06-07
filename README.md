@@ -1,7 +1,6 @@
 # Rick and Morty Case
 
-by berci varga, for gracious
-2022
+A responsive and filterable character database for the Rick and Morty series.
 
 ## Run the development server
 ```bash
