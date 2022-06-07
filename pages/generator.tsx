@@ -22,9 +22,11 @@ import PathLayout from "../components/PathLayout";
 import useGenerator from "../hooks/useGenerator";
 import { SentenceModel } from "../lib/generateSentence";
 import ErrorCard from "../components/ErrorCard";
+import Captcha from "../components/Captcha";
 
 const Generator = () => {
-  const [loading, setLoading] = useState<boolean>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showCaptcha, setShowCaptcha] = useState<boolean>(false);
   const [name, setName] = useState<string>();
   const [species, setSpecies] = useState<string>();
   const [planet, setPlanet] = useState<string>();
@@ -51,8 +53,13 @@ const Generator = () => {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setShowCaptcha(true);
+  }
 
-    if (!(name && species && planet)) {
+  function handleCaptcha(result: boolean) {
+    setShowCaptcha(false);
+
+    if (!result || !(name && species && planet)) {
       return;
     }
 
@@ -74,6 +81,12 @@ const Generator = () => {
       <Head>
         <title>Character backstory generator</title>
       </Head>
+      {showCaptcha && (
+        <Captcha
+          show={showCaptcha}
+          callback={(result) => handleCaptcha(result)}
+        />
+      )}
       <Box w={textWidth}>
         <Text as="h2" fontSize="2xl" fontWeight="bold">
           Generate your own Rick and Morty character!

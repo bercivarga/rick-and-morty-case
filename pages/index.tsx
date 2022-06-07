@@ -29,7 +29,7 @@ const Home = () => {
           <Text fontWeight="black" fontSize="5xl" mb={0}>
             Welcome to the
           </Text>
-          <Image src="/rnm_banner.png" width={640} height={272} />
+          <Image src="/rnm_banner.png" priority width={640} height={272} />
           <Text fontWeight="black" fontSize="5xl">
             database
           </Text>
